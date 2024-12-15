@@ -15,10 +15,6 @@ describe("Date Picker Test", () => {
     cy.waitOnInterceptedGoogleAnalytics();
   });
 
-  it.only('Test', () => {
-    console.log(day)
-  })
-
   it("Should select 2 days date range starting from today via calendar", () => {
     const currentDate = `${datePickerPage.convertMonthNumberToWordingFormat(
       month
