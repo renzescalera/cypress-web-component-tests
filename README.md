@@ -25,7 +25,7 @@
    `npm -v`
 
 2. Navigate to the Project Directory - Open a terminal or command prompt, and navigate to the folder where you cloned this repository. - Example:
-   `cd C:\Users\your-computer\your-folder\Renz_Storyteq_Test_Engineer_Tech_Challenge`
+   `cd C:\Users\your-computer\your-folder\cypress-web-component-test`
 
 3. Install Dependencies - Once inside the project folder, install all dependencies (including Cypress) by running:
    `npm install` - Note: Cypress is already listed in devDependencies in the package.json file, so you don’t need to install it manually with npm install cypress --save-dev.
