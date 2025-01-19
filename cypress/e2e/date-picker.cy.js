@@ -2,8 +2,8 @@ import { datePickerPage } from "../support/page-objects/PageIndex";
 
 describe("Date Picker Test", () => {
   const dateToday = new Date();
-  const month = String(dateToday.getMonth() + 1).padStart(2, "0");
-  const day = String(dateToday.getDate()).padStart(2, "0");
+  const month = String(dateToday.getMonth() + 1);
+  const day = String(dateToday.getDate());
   const year = dateToday.getFullYear();
 
   dateToday.setDate(dateToday.getDate() + 1);
@@ -63,14 +63,14 @@ describe("Date Picker Test", () => {
 
   it("Should select 15 days date range starting from today via calendar", () => {
     dateToday.setDate(dateToday.getDate() + 15); // Add 15 days to the current date
-    const fifteenDaysAhead = String(dateToday.getDate()).padStart(2, "0");
-    const futureMonth = String(dateToday.getMonth() + 1).padStart(2, "0");
+    const fifteenDaysAhead = String(dateToday.getDate());
+    const futureMonth = String(dateToday.getMonth() + 1);
 
     const currentDate = `${datePickerPage.convertMonthNumberToWordingFormat(
       month
     )} ${year}`;
 
-    const formattedDateRange = datePickerPage.desiredDateRangeFormat(
+    const expectedDateRange = datePickerPage.desiredDateRangeFormat(
       month,
       day,
       year,
@@ -109,7 +109,10 @@ describe("Date Picker Test", () => {
         // Validating the selected date range
         datePickerPage
           .getRangeDatePickerField()
-          .should("have.value", formattedDateRange);
+          .then((currentDateInDatepicker) => {
+            const currentDate = currentDateInDatepicker[0].value;
+            expect(currentDate).to.equal(expectedDateRange);
+          });
       });
   });
 
