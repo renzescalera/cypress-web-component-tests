@@ -42,7 +42,15 @@ class DatePicker {
     futureDay,
     futureYear
   ) => {
-    return `${month}/${day}/${year} - ${futureMonth}/${futureDay}/${futureYear}`;
+    const expectedStartMonth = month.padStart(2, "0");
+    const expectedStartDay = day.padStart(2, "0");
+
+    const expectedEndMonth = futureMonth.padStart(2, "0");
+    const expectedEndDay = futureDay.padStart(2, "0");
+
+    const expectedDateOutput = `${expectedStartMonth}/${expectedStartDay}/${year} - ${expectedEndMonth}/${expectedEndDay}/${futureYear}`;
+
+    return expectedDateOutput;
   };
 
   navigateToTheDesiredMonthAndYear(startDate, endDate) {
